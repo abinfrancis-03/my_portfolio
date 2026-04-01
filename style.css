@@ -420,7 +420,7 @@ body {
 /* Active Stage (When Scrolled Into View) */
 .timeline-content.scroll-active{
     background-color: #ffffff;
-    transform: translateX(15px); /* Slides out slightly to catch the eye */
+    transform: translateX(5px); /* Slides out slightly to catch the eye */
     border-color: #3b82f6; /* Your brand blue */
     box-shadow: 0 15px 35px rgba(59, 130, 246, 0.12);
     z-index: 10;
