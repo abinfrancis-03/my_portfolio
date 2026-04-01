@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abin Francis Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+    <a href="#home">
+        <img src="logo.png" alt="GetJob Logo" class="nav-logo-img">
+    </a>
+</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h4>Hello,</h4>
+            <h1>I'm Abin Francis</h1>
+            <h1 class="highlight">a Full-Stack Developer</h1>
+            <p style="text-align: justify;">I am a Full-Stack developer currently pursuing my Master of Computer Applications. I specialize in the Python and Django ecosystem, focusing on building secure, data-driven web applications.</p>
+            
+            <div class="hero-btns">
+                <a href="ABIN FRANCIS.pdf" download="Abin_Francis_Resume">
+                    <button class="btn-primary">Download Resume</button>
+                </a>
+                <button class="btn-secondary" onclick="copyEmail()">Contact Me</button>
+            </div>
+
+            <div class="social-text-links">
+                <a href="https://github.com/abinfrancis-03" target="_blank" rel="noopener noreferrer">GITHUB</a>
+                <a href="https://www.linkedin.com/in/abin-francis-ab3726308?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+                <a href="https://www.instagram.com/abi_n__francis__?igsh=MWV2dXB3cjNodG9sYQ==" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+            </div>
+        </div>
+
+        <div class="hero-image-container">
+            <div class="image-wrapper">
+                <div class="main-circle">
+                    <img src="profile.png" alt="Profile">
+                </div>
+
+                <div class="floating-icon icon-dribbble"><img src="angular.png" alt=""></div>
+                <div class="floating-icon icon-pinterest"><img src="html.png" alt=""></div>
+                <div class="floating-icon icon-google"><img src="python.png" alt=""></div>
+                <div class="floating-icon icon-twitter"><img src="js.png" alt=""></div>
+                <div class="floating-icon icon-payoneer"><img src="django.png" alt=""></div>
+                <div class="floating-icon icon-instagram"><img src="css.png" alt=""></div>
+                <div class="floating-icon icon-drive"><img src="git.png" alt=""></div>
+                <div class="floating-icon icon-slack"><img src="mysql.png" alt=""></div>
+            </div>
+        </div>
+
+        
+    </section>
+
+    <div class="mobile-pill-nav">
+    <a href="#home" class="pill-item active"> Home</a>
+    <a href="#about" class="pill-item"> About</a>
+    <a href="#skills" class="pill-item"> Skill</a>
+    <a href="#projects" class="pill-item"> Project</a>
+    </div>
+
+    <section id="about" class="content-section">
+    <div class="about-wrapper">
+        
+        <div class="experience-box">
+            <h2 class="modern-title">Professional <span>Experience</span></h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="date-tag">March 2025 – August 2025</span>
+                        <h3>Software Faculty</h3>
+                        <h4>G-TEC Education</h4>
+                        <ul>
+                            <li>Facilitated core programming modules in Python (Variables, Control Flow, Data Types).</li>
+                            <li>Guided students through Full-Stack fundamentals (HTML5, CSS3, Django).</li>
+                            <li>Conducted training for DCA and Microsoft Office professional documentation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="date-tag">May 2024 – November 2024</span>
+                        <h3>Full Stack Python Intern</h3>
+                        <h4>Quest Innovative Solutions</h4>
+                        <ul>
+                            <li>Deployed full-stack apps using Django MVT architecture.</li>
+                            <li>Designed PostgreSQL schemas and managed data via Django Models.</li>
+                            <li>Crafted responsive, mobile-first interfaces using JS and CSS3.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="education-box">
+            <h2 class="modern-title">Educational <span>Background</span></h2>
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <div class="edu-icon">MCA</div>
+                    <div class="edu-info">
+                        <h3>KTU University</h3>
+                        <p class="edu-status">2025 – Present</p>
+                        <p class="edu-loc">Lourdes Matha College, TVM</p>
+                    </div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-icon">BSc</div>
+                    <div class="edu-info">
+                        <h3>Kerala University</h3>
+                        <p class="edu-status">2021 – 2024</p>
+                        <p class="edu-loc">Emmanuel College, TVM | CGPA: 6.43</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+    <section id="skills" class="content-section">
+    <div class="about-wrapper">
+        <h2 class="modern-title">Technical <span>Stack</span></h2>
+        
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon-box">
+                    <img src="python.png" alt="Python">
+                </div>
+                <span>Python</span>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon-box">
+                    <img src="django.png" alt="Django">
+                </div>
+                <span>Django</span>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon-box">
+                    <img src="js.png" alt="JS">
+                </div>
+                <span>JavaScript</span>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon-box">
+                    <img src="mysql.png" alt="MySQL">
+                </div>
+                <span>MySQL</span>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon-box">
+                    <img src="html.png" alt="HTML">
+                </div>
+                <span>HTML5</span>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon-box">
+                    <img src="css.png" alt="CSS">
+                </div>
+                <span>CSS3</span>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon-box">
+                    <img src="angular.png" alt="Angular">
+                </div>
+                <span>Angular</span>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon-box">
+                    <img src="git.png" alt="Git">
+                </div>
+                <span>Git</span>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon-box">
+                    <img src="flask.png" alt="PostgreSQL">
+                </div>
+                <span>Flask</span>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon-box">
+                    <img src="office.png" alt="MS Office">
+                </div>
+                <span>MS Office</span>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon-box">
+                    <img src="Bootstrap.png" alt="DCA">
+                </div>
+                <span>Bootstrap</span>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon-box">
+                    <img src="canva.jpg" alt="C++">
+                </div>
+                <span>Canva</span>
+            </div>
+
+        </div>
+    </div>
+</section>
+    <section id="projects" class="content-section">
+    <div class="about-wrapper">
+        <h2 class="modern-title">Technical <span>Projects</span></h2>
+        
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="HR-Management-Systems-scaled-1.webp" alt="HR Management System">
+                    <div class="project-tag">Python & Django</div>
+                </div>
+                <div class="project-info">
+                    <span class="company-tag">Quest Innovative Solutions (2025)</span>
+                    <h3>HR Management System</h3>
+                    <p>Ensures the organization effectively utilizes its human resources to achieve business goals.</p>
+                    
+                    <div class="project-details">
+                        <div class="detail-item"><strong>Modules:</strong> Admin, HR Manager, Employees</div>
+                    </div>
+
+                    <div class="skills-container">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Bootstrap</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="uni-connect.jpg" alt="Uni-Connect">
+                    <div class="project-tag">Python Full Stack</div>
+                </div>
+                <div class="project-info">
+                    <span class="company-tag">Trinity Software Technologies (2024)</span>
+                    <h3>Uni-Connect</h3>
+                    <p>Integrates students, faculty, and staff into a collaborative space for knowledge exchange.</p>
+                    
+                    <div class="project-details">
+                        <div class="detail-item"><strong>Modules:</strong> Admin, Office Staff, Teachers, Student</div>
+                    </div>
+
+                    <div class="skills-container">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="qsare.webp" alt="Q's Arena">
+                    <div class="project-tag">PHP & MySQL</div>
+                </div>
+                <div class="project-info">
+                    <span class="company-tag">Emmanuel College (2023)</span>
+                    <h3>Q's Arena</h3>
+                    <p>A web portal offering syllabus-based, exam-oriented study materials for Kerala University students.</p>
+                    
+                    <div class="project-details">
+                        <div class="detail-item"><strong>Modules:</strong> Admin, Teachers, Students</div>
+                    </div>
+
+                    <div class="skills-container">
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

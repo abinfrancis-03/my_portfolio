@@ -1,0 +1,905 @@
+/* 1. GLOBAL & SMOOTH SCROLL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f8fbff;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* 2. STICKY NAVIGATION (DESKTOP) */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    position: fixed;
+    top: 0;
+    background-color: rgba(11, 19, 84, 0.95);
+    width: 100%;
+    z-index: 1000;
+}
+
+/* --- NAV BAR IMAGE LOGO --- */
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%; /* Ensures it fills the navbar height */
+}
+
+.nav-logo-img {
+    height: 45px; /* Adjust this to fit your specific logo height */
+    width: auto;  /* Maintains the correct aspect ratio */
+    object-fit: contain;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover Effect: Subtle lift and brightness to match your blue theme */
+.nav-logo-img:hover {
+    filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.2));
+}
+
+/* --- COMPACT MOBILE NAVBAR (768px) --- */
+
+@media (max-width: 768px) {
+    .navbar {
+        display: flex; /* Ensure it stays visible */
+        padding: 10px 5%; /* Significantly reduced from 15px/20px */
+        height: 55px;    /* Fixed slim height */
+        justify-content: space-between; /* Keeps logo left, menu right (if any) */
+    }
+
+    .nav-logo-img {
+        height: 30px; /* Smaller, sharper logo for mobile */
+        width: auto;
+    }
+
+    /* If you have a 'Menu' icon or 'Contact' button in the navbar */
+    .nav-links {
+        display: none; /* Keep the links hidden if using the Mobile Pill Nav */
+    }
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover { color: #3b82f6; }
+
+/* MOBILE PILL NAV */
+.mobile-pill-nav {
+    display: none;
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(11, 19, 84, 0.95);
+    padding: 8px;
+    border-radius: 50px;
+    z-index: 2000;
+    width: 90%;
+    max-width: 420px;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.pill-item {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    padding: 10px 16px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s ease;
+}
+
+.pill-item.active {
+    background: #fff;
+    color: #3b82f6;
+    font-weight: 700;
+}
+
+/* 3. HERO SECTION */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: 120px 8% 60px 8%;
+    gap: 50px;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 550px;
+}
+
+.hero-content h4 {
+    color: #6b7280;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.hero-content h1 {
+    font-size: 3.1rem;
+    color: #111827;
+    line-height: 1.1;
+    font-weight: 650;
+}
+
+.hero-content .highlight { 
+    color: #3b82f6;
+ }
+
+.hero-content p {
+    margin: 25px 0;
+    color: #9ca3af;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+
+
+.btn-primary {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #7f838a;
+    border: 1px solid #9ca3af;
+    padding: 14px 28px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+}
+/* RESTORED SOCIAL TEXT LINKS STYLE */
+.social-text-links {
+    display: flex;
+    gap: 30px;
+}
+
+.social-text-links a {
+    text-decoration: none;
+    color: #7f838a;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.social-text-links a:hover {
+    color: #3b82f6;
+}
+
+/* 4. IMAGE ORBIT AREA */
+.hero-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 480px;
+    height: 480px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 82%;
+    height: 82%;
+    border: 1px solid rgba(0, 0, 0, 0.11);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.main-circle {
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 2;
+    background: #fff;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.05);
+}
+
+.main-circle img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Container for the icon */
+.floating-icon {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    z-index: 3;
+    /* This padding ensures the logo doesn't touch the circle edges */
+    padding: 10px; 
+    overflow: hidden; /* Keeps everything rounded */
+    animation: floatAnim 4s ease-in-out infinite;
+}
+
+/* The actual image (html.png, etc.) */
+.floating-icon img {
+    width: 100%;
+    height: 100%;
+    /* 'contain' ensures the logo isn't stretched and stays inside the padding */
+    object-fit: contain; 
+    display: block;
+}
+
+/* COORDINATES */
+.icon-dribbble { width: 42px; height: 42px; top: 5%; left: 46%; }
+.icon-pinterest { width: 68px; height: 68px; top: 18%; left: 8%; }
+.icon-google    { width: 68px; height: 68px; top: 18%; right: 8%; }
+.icon-twitter   { width: 32px; height: 32px; top: 45%; right: 8%; }
+.icon-payoneer  { width: 55px; height: 55px; bottom: 22%; right: 5%; }
+.icon-instagram { width: 68px; height: 68px; bottom: -1%; left: 43%; }
+.icon-drive     { width: 52px; height: 52px; bottom: 22%; left: 7%; }
+.icon-slack     { width: 38px; height: 38px; top: 45%; left: 8%; }
+
+@keyframes floatAnim {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* 5. STRICT MOBILE RESPONSIVE (768px) */
+@media (max-width: 768px) {
+    .navbar { justify-content: center; padding: 15px 5%; }
+    .nav-links { display: none; }
+    .mobile-pill-nav { display: flex; }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 100px;
+        gap: 60px;
+    }
+
+    .hero-content { order: 1; width: 100%; }
+    .hero-image-container { order: 2; width: 100%; }
+
+    .hero-content h1 { font-size: 2.8rem; }
+
+    .image-wrapper { width: 320px; height: 320px; }
+    .main-circle { width: 180px; height: 180px; }
+
+    /* Scaling Icons */
+    .icon-pinterest, .icon-google, .icon-instagram { width: 45px; height: 45px; }
+    .icon-drive, .icon-payoneer { width: 35px; height: 35px; }
+    .icon-dribbble, .icon-slack, .icon-twitter { width: 25px; height: 25px; }
+
+    /* Centers both buttons and social links on mobile */
+    .hero-btns, .social-text-links { 
+        justify-content: center; 
+    }
+}
+
+
+/* ABOUT SECTION REDESIGN */
+.about-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.modern-title {
+    font-size: 32px;
+    color: #0b1354;
+    margin-bottom: 40px;
+    font-weight: 800;
+}
+
+.modern-title span { color: #3b82f6; }
+
+/* TIMELINE STYLING */
+.timeline {
+    position: relative;
+    border-left: 2px solid #e5e7eb;
+    margin-left: 20px;
+    padding-left: 40px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -51px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    background: #3b82f6;
+    border-radius: 50%;
+    border: 4px solid #f8fbff;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+}
+
+.timeline-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: 0.3s;
+}
+
+.timeline-content:hover {
+    transform: translateX(10px);
+    box-shadow: 0 15px 35px rgba(59, 130, 246, 0.1);
+}
+
+.date-tag {
+    font-size: 11px;
+    font-weight: 700;
+    color: #3b82f6;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.timeline-content h3 { font-size: 18px; color: #111827; }
+.timeline-content h4 { font-size: 14px; color: #9ca3af; margin-bottom: 15px; }
+
+.timeline-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.timeline-content li {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+
+/* --- SCROLL-ACTIVE EXPERIENCE BOXES --- */
+
+/* Normal Stage (Ghost Blue) */
+.timeline-content {
+    background-color: #f8fbff;
+    border: 1px solid #eef2f7;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Active Stage (When Scrolled Into View) */
+.timeline-content.scroll-active{
+    background-color: #ffffff;
+    transform: translateX(15px); /* Slides out slightly to catch the eye */
+    border-color: #3b82f6; /* Your brand blue */
+    box-shadow: 0 15px 35px rgba(59, 130, 246, 0.12);
+    z-index: 10;
+}
+
+
+.scroll-active .timeline-dot {
+    background: #3b82f6;
+    transform: scale(1.3);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+}
+
+
+/* EDUCATION GRID */
+.education-box { margin-top: 80px; }
+
+.edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.edu-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #f3f4f6;
+}
+
+.edu-icon {
+    width: 60px;
+    height: 60px;
+    background: #0b1354;
+    color: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.edu-info h3 { font-size: 16px; color: #111827; }
+.edu-status { font-size: 12px; color: #3b82f6; font-weight: 600; }
+.edu-loc { font-size: 13px; color: #9ca3af; }
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .edu-grid { grid-template-columns: 1fr; }
+    
+    .timeline { margin-left: 10px; padding-left: 25px; }
+    .timeline-dot { left: -36px; }
+    
+    .modern-title { font-size: 26px; text-align: center; }
+}
+
+@media (max-width: 768px) {
+    /* 1. Add side padding to the main container */
+    .about-wrapper {
+        padding: 0 20px;
+    }
+
+    /* 2. Adjust the timeline spacing for smaller screens */
+    .timeline {
+        margin-left: 10px;
+        padding-left: 25px;
+    }
+
+    /* 3. Reduce internal padding of cards so they don't get too skinny */
+    .timeline-content {
+        padding: 18px;
+    }
+
+    /* 4. Add bottom padding to the whole section so the 
+       Mobile Pill Nav doesn't cover your content */
+    #about {
+        padding-bottom: 120px;
+    }
+}
+
+/* 1. SKILLS GRID LAYOUT */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Desktop: 4 Columns */
+    gap: 25px;
+    margin-top: 40px;
+}
+
+/* 2. THE CURVED SQUARE CARD */
+.skill-card {
+    background: #ffffff;
+    border-radius: 24px; /* Stylish curved corners */
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+}
+
+/* 3. ICON BOX - FULL COLOR */
+.skill-icon-box {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-icon-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Removed Grayscale - Now normal color */
+    transition: transform 0.3s ease;
+}
+
+/* 4. SKILL TEXT */
+.skill-card span {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0b1354; /* Your original Navy color */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 5. HOVER EFFECTS */
+.skill-card:hover {
+    transform: translateY(-8px);
+    background: #ffffff;
+    border-color: #3b82f6; /* Your original Blue color */
+    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.12);
+}
+
+.skill-card:hover .skill-icon-box img {
+    transform: scale(1.15); /* Subtle zoom on the logo */
+}
+
+/* 6. MOBILE RESPONSIVE (768px) */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr); /* Mobile: 3 Columns */
+        gap: 15px;
+    }
+
+    .skill-card {
+        padding: 20px 10px;
+        border-radius: 18px;
+    }
+
+    .skill-icon-box {
+        width: 45px;
+        height: 45px;
+    }
+
+    .skill-card span {
+        font-size: 10px;
+    }
+
+    .skill-card:hover {
+    transform: translateY(-3px);
+}
+}
+
+/* PROJECTS GRID */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* STYLISH CURVED CARD */
+.project-card {
+    background: #ffffff;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+}
+
+.project-image {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: #f1f5f9;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #3b82f6; /* Your Blue */
+    color: white;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.project-info {
+    padding: 25px;
+    flex-grow: 1;
+}
+
+.company-tag {
+    display: block;
+    font-size: 10px;
+    font-weight: 800;
+    color: #6b7280;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.project-info h3 {
+    font-size: 18px;
+    color: #0b1354; /* Your Navy */
+    margin-bottom: 12px;
+}
+
+.project-info p {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* NEW DETAILED INFO SECTION */
+.project-details {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 15px;
+}
+
+.detail-item {
+    font-size: 12px;
+    color: #4b5563;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.detail-item strong {
+    color: #0b1354;
+    font-weight: 700;
+}
+
+/* HOVER ANIMATIONS */
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
+    border-color: #3b82f6;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.1);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card { max-width: 450px; margin: 0 auto; }
+}
+
+/* --- UPDATED PROJECTS SKILLS TAGS --- */
+
+/* 1. Container for the skill tags */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #f1f5f9; /* Matches your .project-details border */
+}
+
+/* 2. Bottom-Side Round Tags */
+.skill-tag {
+    background-color: #f3f4f6;
+    color: #0b1354; /* Using your Navy brand color */
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    
+    /* The "Bottom-Side Round" Logic */
+    border-top-left-radius: 4px;   /* Slight curve on top for modern look */
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 15px; /* Pronounced curve on bottom */
+    border-bottom-right-radius: 15px;
+    
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+/* 3. Hover Effect for Skill Tags */
+.project-card:hover .skill-tag {
+    background-color: #3b82f6; /* Switches to your Blue on card hover */
+    color: #ffffff;
+    transform: translateY(2px); /* Subtle "drop" effect */
+}
+
+/* Ensuring Detail Item uses 'Admin' styling */
+.detail-item strong {
+    color: #3b82f6; /* Highlight the 'Modules:' and 'Admin' text */
+}
+
+/* --- CLICK-ONLY ACTIVE STATE --- */
+
+/* Skill & Project Card Active */
+.skill-card.active, .project-card.active {
+    transform: translateY(-12px) scale(1.03);
+    border-color: #3b82f6;
+    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+    background: #ffffff;
+    z-index: 10; /* Ensures the active card stays on top of others */
+}
+
+/* Highlight 'Admin' text specifically when card is active */
+.active .detail-item strong {
+    color: #3b82f6;
+}
+
+/* Highlight the bottom-rounded skill tags when card is active */
+.active .skill-tag {
+    background-color: #3b82f6;
+    color: #fff;
+}
+
+/* --- STYLISH SECTION SEPARATOR --- */
+
+.content-section {
+    position: relative;
+    padding-bottom: 100px; /* Space for the line */
+}
+
+.content-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%; /* Starts 10% from the left */
+    width: 80%; /* Spans 80% of the screen */
+    height: 1px;
+    
+    /* Gradient fade: Transparent -> Light Gray -> Transparent */
+    background: linear-gradient(to right, 
+        transparent, 
+        rgba(59, 130, 246, 0.2), 
+        #e5e7eb, 
+        rgba(59, 130, 246, 0.2), 
+        transparent
+    );
+}
+
+/* The "Center Anchor" Dot */
+.content-section::before {
+    content: '';
+    position: absolute;
+    bottom: -4px; /* Centers the dot on the line */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background: #ffffff;
+    border: 2px solid #3b82f6; /* Your brand blue */
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+}
+
+section:last-of-type::after,
+section:last-of-type::before {
+    display: none;
+}
+
+
+
+
+/* --- UNIFIED SECTION & WRAPPER SPACING --- */
+
+.content-section {
+    /* Vertical spacing between sections */
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin: 0;
+    width: 100%;
+    position: relative; /* Required for the ::after separator line */
+}
+
+.about-wrapper {
+    /* Horizontal alignment and internal constraints */
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 90%;
+}
+
+/* Standardizing the Title Spacing across all sections */
+.modern-title {
+    margin-bottom: 50px;
+    text-align: left; /* Keeps 'About', 'Skills', and 'Projects' aligned */
+}
+
+@media (max-width: 768px) {
+    .content-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .about-wrapper {
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 95%;
+    }
+
+    .modern-title {
+        margin-bottom: 30px;
+        text-align: center; /* Optional: Center titles on mobile for balance */
+    }
+}
+
+
+/* --- ALTERNATING SECTION COLORS --- */
+
+/* 1. Set the odd sections (Home, Skills) to your Ghost Blue */
+section:nth-of-type(odd) {
+    background-color: #f8fbff;
+}
+
+/* 2. Set the even sections (About, Projects) to Pure White */
+section:nth-of-type(even) {
+    background-color: #ffffff;
+}
+
+/* 3. Ensure the wrappers and body don't interfere */
+.content-section {
+    width: 100%;
+    margin: 0;
+    transition: background-color 0.3s ease; /* Smooth transition if you add themes later */
+}
+
+
+.content-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    /* We make the line slightly darker so it's visible on both White and Ghost Blue */
+    background: linear-gradient(to right, 
+        transparent, 
+        rgba(0, 0, 0, 0.05), 
+        rgba(0, 0, 0, 0.1), 
+        rgba(0, 0, 0, 0.05), 
+        transparent
+    );
+}
+
+
