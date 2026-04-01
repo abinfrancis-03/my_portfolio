@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 html {
@@ -12,9 +12,44 @@ html {
 
 body {
     background-color: #f8fbff;
-    color: #333;
+    color: #1a1a1a; /* Slightly darker for better minimal contrast */
     overflow-x: hidden;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    line-height: 1.6;
 }
+
+/* Minimalist Royal Headings */
+h1, h2, h3, .logo {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700; /* Bold but clean */
+    letter-spacing: -0.03em; /* Tighter spacing for a modern look */
+    color: #0b1354; 
+    margin-bottom: 1.5rem;
+}
+
+/* Light weight for body text to keep it "airy" */
+p, li, .about-text {
+    font-weight: 400;
+    color: #4a5568; /* Soft charcoal for a minimal feel */
+}
+
+/* Refined Mobile Pill Nav */
+.pill-item {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.pill-item.active {
+    background: #fff;
+    color: #3b82f6;
+    font-weight: 700;
+}
+
+
 
 /* 2. STICKY NAVIGATION (DESKTOP) */
 .navbar {
@@ -60,9 +95,16 @@ body {
         justify-content: space-between; /* Keeps logo left, menu right (if any) */
     }
 
-    .nav-logo-img {
-        height: 30px; /* Smaller, sharper logo for mobile */
+.nav-logo-img {
+        /* Centering Magic */
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        
+        height: 30px;           /* Keeping your slim height */
         width: auto;
+        display: block;
     }
 
     /* If you have a 'Menu' icon or 'Contact' button in the navbar */
@@ -87,24 +129,47 @@ body {
 
 .nav-links a:hover { color: #3b82f6; }
 
-/* MOBILE PILL NAV */
+/* 1. Hide it by default for Desktop */
 .mobile-pill-nav {
-    display: none;
-    position: fixed;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(11, 19, 84, 0.95);
-    padding: 8px;
-    border-radius: 50px;
-    z-index: 2000;
-    width: 90%;
-    max-width: 420px;
-    justify-content: space-around;
-    align-items: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: none; 
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
 }
 
+/* 2. Only show it on Mobile/Tablets */
+@media (max-width: 768px) {
+    .mobile-pill-nav {
+        display: flex; /* Activate layout */
+        opacity: 1;    /* Make it visible */
+        pointer-events: auto; /* Make it clickable */
+        
+        /* Your existing styles */
+        position: fixed;
+        bottom: 25px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(11, 19, 84, 0.95);
+        padding: 8px;
+        border-radius: 50px;
+        z-index: 2000;
+        width: 90%;
+        max-width: 420px;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        backdrop-filter: blur(10px);
+
+    }
+    .mobile-pill-nav a {
+    font-size: 11px;
+    font-weight: 500;
+
+}
+
+}
+
+/* 3. Smooth transition for the items */
 .pill-item {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.6);
@@ -114,14 +179,18 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .pill-item.active {
     background: #fff;
     color: #3b82f6;
     font-weight: 700;
+    transform: scale(1.05); /* Slight pop animation */
 }
+
+
+
 
 /* 3. HERO SECTION */
 .hero {
@@ -145,17 +214,43 @@ body {
     margin-bottom: 5px;
 }
 
+/* Ensure the font is imported in your HTML head: 
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;800&display=swap" rel="stylesheet"> 
+*/
+
 .hero-content h1 {
-    font-size: 3.1rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.5rem;
     color: #111827;
     line-height: 1.1;
-    font-weight: 650;
+    /* Extra Bold for the name */
+    font-weight: 650; 
+    letter-spacing: -1.5px;
+    margin-bottom: 0.2rem;
 }
 
 .hero-content .highlight { 
+    font-family: 'Outfit', sans-serif;
     color: #3b82f6;
- }
+    /* Stylish Thin/Light weight for the role */
+    font-weight: 650; 
+    font-size: 2.2rem; /* Slightly smaller than the name for hierarchy */
+    display: block;    /* Puts the title on its own line for a cleaner look */
+    letter-spacing: 1px;
+}
 
+h1::after {
+    content: '';
+    color: #3b82f6; /* Adds a stylish blue dot after your name */
+}
+
+/* If you want the "Full-Stack" part to look very high-end */
+.highlight {
+    background: linear-gradient(90deg, #3b82f6, #0b1354);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+}
 .hero-content p {
     margin: 25px 0;
     color: #9ca3af;
@@ -420,7 +515,6 @@ body {
 /* Active Stage (When Scrolled Into View) */
 .timeline-content.scroll-active{
     background-color: #ffffff;
-    transform: translateX(5px); /* Slides out slightly to catch the eye */
     border-color: #3b82f6; /* Your brand blue */
     box-shadow: 0 15px 35px rgba(59, 130, 246, 0.12);
     z-index: 10;

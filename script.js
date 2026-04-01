@@ -90,3 +90,36 @@ function copyEmail() {
   btn.innerHTML = "Email Copied!";
   setTimeout(() => { btn.innerHTML = originalText; }, 2000);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section'); // Ensure your sections have <section id="home"> etc.
+    const navItems = document.querySelectorAll('.pill-item');
+
+    const options = {
+    root: null,
+    // rootMargin: '-20% 0px -20% 0px' helps trigger the middle of the screen
+    rootMargin: '-25% 0px -25% 0px', 
+    threshold: 0.1 // Lowers the requirement to only 10% visibility to trigger
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // Remove active class from all items
+                navItems.forEach((item) => item.classList.remove('active'));
+
+                // Add active class to the item matching the current section ID
+                const activeId = entry.target.getAttribute('id');
+                const activeNav = document.querySelector(`.pill-item[href="#${activeId}"]`);
+                
+                if (activeNav) {
+                    activeNav.classList.add('active');
+                }
+            }
+        });
+    }, options);
+
+    sections.forEach((section) => {
+        observer.observe(section);
+    });
+});
